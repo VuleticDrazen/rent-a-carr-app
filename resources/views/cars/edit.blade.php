@@ -59,12 +59,12 @@
 
                             <div class="form-group">
                                 <div class="form-group">
-                                    <img src="{{ $car->fotografija }}" width="100" height="100" alt=""
+                                    <img src='storage/{{ $car->fotografija }}' width="100" height="100" alt=""
                                          class="img-fluid rounded">
                                 </div>
 
                                 <label for="">Photo*</label>
-                                <input type="file" name="fotografija" value="{{$car->fotografija}}" class="form-control">
+                                <input type="file" name="fotografija" value='storage/{{ $car->fotografija }}' class="form-control">
 
                             </div>
                             <button type="submit" class="bt btn-primary"> Edit</button>

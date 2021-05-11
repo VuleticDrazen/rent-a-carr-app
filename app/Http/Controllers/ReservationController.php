@@ -25,14 +25,24 @@ class ReservationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id, Car $car)
+
+
+    public function search(){
+        $datum1 = $request->datum_preuzimanja;
+        $datum2 = $request->datum_vracanja;
+        $cars = Car::query()
+            ->whereIn('id', function($query)use($datum1,$datum2){
+                $query->from('reservations')
+                    ->where(!('datum_preuzimanja' >= $datum1 && 'datum_vracanja' <= $datum2) )
+                    ->select(['reservations.car_id']);
+            });
+        return view('reservations.search',['cars'=>$cars,'datum1'=>$datum1, 'datum2'=>$datum2]);
+    }
+
+    public function create(Request $request)
     {
-        return view('reservations.create')->with(
-            [
-                'id' => Car::findOrFail($id),
-                'car' => $car::all()
-            ]
-        );
+
+        return view('reservations.create');
     }
 
     /**
