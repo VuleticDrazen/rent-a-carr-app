@@ -15,8 +15,8 @@ class CreateReservationsTable extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('datum_preuzimanja');
-            $table->dateTime('datum_vracanja');
+            $table->date('datum_preuzimanja');
+            $table->date('datum_vracanja');
             $table->foreignId('lokacija_preuzimanja')->constrained('locations');
             $table->foreignId('lokacija_vracanja')->constrained('locations');
             $table->foreignId('dodatna_oprema')->constrained('equipment');

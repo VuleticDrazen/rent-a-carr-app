@@ -20,15 +20,14 @@
     @foreach($reservations as $reservation)
         <tr>
             <td>{{$reservation->id}}</td>
-            <td><img style="height: 160px; width: 200px" src="{{asset($car->fotografija)}}" alt="" class="img-fluid"></td>
             <td>{{$reservation->datum_preuzimanja}}</td>
             <td>{{$reservation->datum_vracanja}}</td>
-            <td>{{$reservation->lokacija_preuzimanja}}</td>
-            <td>{{$reservation->lokacija_vracanja}}</td>
-            <td>{{$reservation->car->marka}} {{$reservation->car->model}} {{$reservation->car->godina_proizvodnje}} {{$reservation->car->registarski_broj}}</td>
+            <td>{{$reservation->locationp()->naziv}}</td>
+            <td>{{$reservation->locationv()->naziv}}</td>
+            <td>{{$reservation->car_id}}</td>
             <td>{{$reservation->dodatna_oprema}}</td>
-            <td>{{$reservation->cijena}}</td>
-            <td><a href="/reservations/{{$reservation->id}}/">detalji</a></td>
+            <td>{{$reservation->cijena_rezervacije}}</td>
+
             <td>
                 <form action="/reservations/{{$reservation->id}}" method="POST">
                     @csrf

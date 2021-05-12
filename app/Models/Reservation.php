@@ -20,5 +20,13 @@ class Reservation extends Model
         return $this->hasOne(Car::class);
     }
 
+    public function locationp(){
+        return Location::query()->find($this->lokacija_preuzimanja);
 
+    }
+
+    public function locationv(){
+        return Location::query()->find($this->lokacija_vracanja);
+
+    }
 }

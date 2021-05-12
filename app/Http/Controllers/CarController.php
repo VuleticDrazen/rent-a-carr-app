@@ -17,7 +17,7 @@ class CarController extends Controller
     public function index()
     {
         $cars = Car::query()->paginate(Car::PER_PAGE);
-        //$cars = Car::where('broj_sjedista','<','7')->get();
+
         return view('cars.index', ['cars'=> $cars]);
 
     }
@@ -67,7 +67,7 @@ class CarController extends Controller
      */
     public function show(Car $car)
     {
-       // abbort_unless($car->user_id == auth()->id(), 403 );
+
         return view('cars.show', [ 'car'=>$car]);
     }
 
@@ -118,6 +118,6 @@ class CarController extends Controller
     public function destroy(Car $car)
     {
         $car->delete();
-        return redirect()->route('admin.index')->withSuccess('Automobil uspjesno obrisan!');
+        return redirect('cars/');
     }
 }

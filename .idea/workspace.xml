@@ -4,13 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="67a2bb61-d231-4a6b-9064-39979fac0bb2" name="Default Changelist" comment="">
+    <list default="true" id="67a2bb61-d231-4a6b-9064-39979fac0bb2" name="Default Changelist" comment="2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CarController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CarController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ReservationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/cars/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cars/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Country.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Country.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Reservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Reservation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_05_09_215045_create_reservations_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_05_09_215045_create_reservations_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/cars/new.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cars/new.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/navigation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navigation.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/reservations/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reservations/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/reservations/new.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reservations/search.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/reservations/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reservations/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/reservations/search.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reservations/search.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/reservations/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reservations/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -188,12 +201,25 @@
       <workItem from="1620543517914" duration="20755000" />
       <workItem from="1620595280746" duration="14552000" />
       <workItem from="1620674196421" duration="4095000" />
-      <workItem from="1620735492364" duration="21715000" />
+      <workItem from="1620735492364" duration="27908000" />
+      <workItem from="1620820227726" duration="11577000" />
     </task>
+    <task id="LOCAL-00001" summary="2">
+      <created>1620758217318</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1620758217332</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="2" />
+    <option name="LAST_COMMIT_MESSAGE" value="2" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

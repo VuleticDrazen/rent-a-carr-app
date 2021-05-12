@@ -9,7 +9,6 @@
                         <form action="/cars" method="post" enctype="multipart/form-data">
                             @csrf
 
-
                             <div class="form-group">
                                 <label for="">Marka*</label>
                                 <input type="text" name="marka" class="form-control" placeholder="Marka" class="form-control @error('marka') is-invalid @enderror" value="{{old('marka')}}"/>

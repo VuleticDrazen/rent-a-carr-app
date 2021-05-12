@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
+use App\Models\Category;
+use App\Models\Equipment;
+use App\Models\Location;
 use App\Models\Reservation;
+use Carbon\Carbon;
+use Carbon\Traits\Date;
 use Illuminate\Http\Request;
 
 class ReservationController extends Controller
@@ -28,21 +33,32 @@ class ReservationController extends Controller
 
 
     public function search(){
-        $datum1 = $request->datum_preuzimanja;
-        $datum2 = $request->datum_vracanja;
-        $cars = Car::query()
-            ->whereIn('id', function($query)use($datum1,$datum2){
-                $query->from('reservations')
-                    ->where(!('datum_preuzimanja' >= $datum1 && 'datum_vracanja' <= $datum2) )
-                    ->select(['reservations.car_id']);
-            });
-        return view('reservations.search',['cars'=>$cars,'datum1'=>$datum1, 'datum2'=>$datum2]);
+
+        $categories = Category::query();
+        return view('reservations.search',['categories',$categories]);
     }
 
     public function create(Request $request)
     {
+        $locations = Location::all();
+        $equipments = Equipment::all();
+        $datum1 =  Carbon::parse($request->datum_preuzimanja);
+        $datum2 =  Carbon::parse($request->datum_vracanja);
 
-        return view('reservations.create');
+        $length = $datum2->diffInDays($datum1);
+        $car_cat_id = $request->category_id;
+
+
+        $cars = Car::query()
+            ->whereNotIn('id', function($query)use($datum1,$datum2){
+                $query->from('reservations')
+                    ->where('reservations.datum_preuzimanja',  '>=', $datum1)
+                    ->where('reservations.datum_vracanja', '<=' ,$datum2)
+                    ->select(['reservations.car_id']);
+            })->get();
+
+
+        return view('reservations.create',['cars'=>$cars,'car_cat_id'=>$car_cat_id, 'locations'=>$locations,'equipments'=>$equipments,'dateTake'=>$datum1,'dateBack'=>$datum2,'length'=>$length]);
     }
 
     /**
@@ -55,26 +71,20 @@ class ReservationController extends Controller
     {
 
         $car = Car::findOrFail($request->car_id);
-        $dateTakeCar = new \DateTime($request->datum_preuzimanja);
-        $dateGetCarBack = new \DateTime($request->datum_vracanja);
-        $dates = date_diff($dateTakeCar, $dateGetCarBack);
-        $price = $car->cijena_po_danu*( $dates->format('%d'));
+        $price = $car->cijena_po_danu * $request->length;
 
         Reservation::create([
 
             'user_id' => auth()->user()->id,
             'car_id' => $request->car_id,
-            'datum_preuzimanja' => $request->datum_preuzimanja,
-            'datum_vracanja' => $request->datum_vracanja,
+            'datum_preuzimanja' => $request->dateTake,
+            'datum_vracanja' => $request->dateBack,
             'lokacija_preuzimanja'=>$request->lokacija_preuzimanja,
-            'lokacija_vracanja'=>$request->lokacija_preuzimanja,
+            'lokacija_vracanja'=>$request->lokacija_vracanja,
             'dodatna_oprema'=>$request->dodatna_oprema,
             'cijena_rezervacije' => $price
-        ]);
-        return redirect()->route('users.profile', auth()->user()->id)->with([
-            'success' => 'Rezervacija uspjesna'
-        ]);
-
+        ])->save();
+        return redirect('reservations/');
     }
 
     /**
@@ -85,7 +95,7 @@ class ReservationController extends Controller
      */
     public function show(Reservation $reservation)
     {
-        //
+
     }
 
     /**
@@ -119,6 +129,8 @@ class ReservationController extends Controller
      */
     public function destroy(Reservation $reservation)
     {
-        //
+
+        $reservation->delete();
+        return redirect('reservations/');
     }
 }

@@ -17,6 +17,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::query()->paginate(User::PER_PAGE);
+
         return view('users.index', ['users'=> $users]);
 
     }
@@ -39,7 +40,16 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
+        User::create([
+            'name'=>$request->name,
+            'drzava_id'=>$request->drzava_id,
+            'broj_pasosa'=>$request->broj_pasosa,
+            'email'=>$request->email,
+            'broj_telefona'=>$request->broj_telefona,
+            'dodante_napomene'=>$request->dodatne_napomene,
 
+        ]);
+        return redirect('/users');
 
     }
 
@@ -64,7 +74,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $country = Country::all();
-        return view('users.edit', ['countries'=>$country]);
+        return view('users.edit', ['user'=>$user,'countries'=>$country]);
 
     }
 

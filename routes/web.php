@@ -14,23 +14,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view( 'dashboard');
+})->middleware('auth');
 
 Route::get('/reservations/search', function () {
-    return view('reservations.search');
-});
+    $categories = \App\Models\Category::all();
+    return view('reservations.search',['categories'=>$categories]);
+})->middleware('auth');
 
 
-Route::resource('/cars', \App\Http\Controllers\CarController::class );
+Route::resource('/cars', \App\Http\Controllers\CarController::class )->middleware('auth');;
 
-Route::resource('/reservations', \App\Http\Controllers\ReservationController::class);
+Route::resource('/reservations', \App\Http\Controllers\ReservationController::class)->middleware('auth');;
 
-Route::resource('/users', \App\Http\Controllers\UserController::class);
+Route::resource('/users', \App\Http\Controllers\UserController::class)->middleware('auth');;
 
 Route::get('reservations/?datum_preuzimanja=foo&datum_vracanja=bar', function(){
     return view('reservations.create');
-});
+})->middleware('auth');;
 
 
 Route::get('/dashboard', function () {

@@ -25,11 +25,11 @@
                 <td>{{$user->id}}</td>
                 <td>{{$user->broj_pasosa}}</td>
                 <td>{{$user->country()->naziv}}</td>
-                <td><a href="/cars/{{$user->id}}/edit">edit</a></td>
-                <td><a href="/cars/{{$user->id}}">detalji</a></td>
+                <td><a href="/users/{{$user->id}}/edit">edit</a></td>
+                <td><a href="/users/{{$user->id}}">detalji</a></td>
                 {{-- <td>{{$city->population > 10000 ? "City"  : "Town" }}</td> --}}
                 <td>
-                    <form action="/cars/{{$user->id}}" method="POST">
+                    <form action="/users/{{$user->id}}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button>Delete</button>
